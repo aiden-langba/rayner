@@ -1,0 +1,14 @@
+section.summary {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+}
+.summary-box {
+  display: grid;
+  place-items: center;
+  width: 70%;
+  /* height: ; */
+  background: white;
+  border-radius: 5px;
+}

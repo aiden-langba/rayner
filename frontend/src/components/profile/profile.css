@@ -1,0 +1,31 @@
+.profile {
+  height: 100%;
+  display: grid;
+  place-items: center;
+}
+.profile-box {
+  background: white;
+  width: 70%;
+  /* height: 70%; */
+  border-radius: 10px;
+}
+.profile-box .profile-body {
+  border: 1px solid rgb(220, 219, 219);
+  width: 100%;
+}
+.profile-box h1 {
+  padding: 10px 20px;
+}
+.profile-box .profile-body p {
+  display: flex;
+  padding: 10px;
+}
+.profile-box .profile-body p:nth-child(even) {
+  background: rgb(240, 240, 240);
+}
+.profile-box .profile-body label {
+  font-weight: bold;
+  margin-right: 10px;
+  min-width: 100px;
+  /* background: green; */
+}

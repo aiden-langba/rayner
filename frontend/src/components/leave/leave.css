@@ -1,0 +1,49 @@
+section.leave {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+}
+form {
+  background: white;
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  min-width: 400px;
+  padding: 50px;
+}
+form label {
+  margin: 20px 0 10px 0;
+}
+form textarea {
+  resize: none;
+  height: 80px;
+  border: none;
+  background: rgb(237, 237, 237);
+  border-radius: 5px;
+  padding: 10px;
+}
+form button {
+  margin: 20px 0;
+  padding: 8px 0;
+  border: none;
+  background-color: #6e94a9;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+form button:hover {
+  background-color: #7ea9c1;
+}
+form select {
+  background: rgb(237, 237, 237);
+  height: 30px;
+}
+form input {
+  background: rgb(237, 237, 237);
+  border: none;
+  padding: 5px 10px;
+  text-transform: uppercase;
+}

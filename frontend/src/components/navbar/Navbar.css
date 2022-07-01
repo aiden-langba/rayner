@@ -1,0 +1,29 @@
+nav {
+  background: #1d323f;
+  padding-inline: 20px;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  z-index: 10;
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-weight: 600;
+  color: white;
+}
+nav #logo {
+  object-position: left;
+  flex: 1;
+}
+nav img {
+  height: 100%;
+  flex: 1;
+  object-fit: contain;
+}
+nav .user {
+  display: flex;
+  justify-content: end;
+  flex: 1;
+  gap: 30px;
+}

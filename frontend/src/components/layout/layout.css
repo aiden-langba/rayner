@@ -1,0 +1,19 @@
+.layout {
+  height: 100vh;
+  background-color: rgb(237, 242, 245);
+}
+
+main.page {
+  display: flex;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 60px);
+}
+
+section.body {
+  background: rgb(238, 242, 243);
+  width: 100%;
+  /* padding: 10px; */
+}

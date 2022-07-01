@@ -1,0 +1,22 @@
+section.sidebar {
+  width: 20%;
+  max-width: 250px;
+  background: #3c474d;
+}
+
+.sidebar ul {
+  /* margin-top: 20px; */
+  display: flex;
+  flex-direction: column;
+}
+.sidebar ul a {
+  color: rgb(220, 219, 222);
+  text-decoration: none;
+  padding: 20px 20px;
+}
+.sidebar ul a:hover {
+  background: #353b3f;
+}
+.sidebar ul a.active {
+  background: #353b3f;
+}
