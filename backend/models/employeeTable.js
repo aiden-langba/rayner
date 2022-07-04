@@ -38,6 +38,7 @@ create table attendance(
   checkout TIME,
   attendancedate DATE,
   employeeid BIGINT REFERENCES employee(employeeid)
+  unique (attendancedate, employeeid)
 );
 create table leave(
   leaveid SERIAL  PRIMARY KEY,

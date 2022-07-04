@@ -25,6 +25,12 @@ exports.employeelog = (req, res) => {
   )})`;
   db.query(sql)
     .then(() => res.send("Employee LOGGED"))
+    .catch((e) => res.status(401).send(e));
+};
+exports.employeeout = (req, res) => {
+  const sql = `update attendance set checkout='${req.body.checkout}' where employeeid='${req.params.employeeid}'`;
+  db.query(sql)
+    .then(() => res.send("Employee LOGGED"))
     .catch((e) => console.log(e));
 };
 

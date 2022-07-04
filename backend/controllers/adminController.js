@@ -63,7 +63,9 @@ exports.adminLogin = async (req, res) => {
 };
 
 exports.listEmployeesLeave = (req, res) => {
-  db.query(`select * from leave`)
+  db.query(
+    `select * from leave inner join employee on leave.employeeid=employee.employeeid`
+  )
     .then((results) => res.send(results.rows))
     .catch((err) =>
       setImmediate(() => {
@@ -76,7 +78,7 @@ exports.approveLeave = (req, res) => {
   const keys = Object.keys(req.body);
   const values = Object.values(req.body);
   const placeholder = keys.map((item, i) => `${item}  =  \$${i + 1}`);
-  const sql = ` update leave SET ${placeholder} where employeeid = ${req.params.employeeid} `;
+  const sql = ` update leave SET ${placeholder} where leaveid = ${req.params.employeeid} `;
   db.query(sql, values)
     .then(() => res.send(`Leave for ${req.params.employeeid} approve`))
     .catch((e) => console.log(e));

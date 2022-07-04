@@ -17,7 +17,7 @@ const Login = () => {
           console.log("res hello", res);
           const user = {
             isAuthenticated: true,
-            user: "Rayner",
+            user: { firstname: "Rayner" },
             role: "admin"
           };
           window.localStorage.setItem("user", JSON.stringify(user));

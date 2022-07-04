@@ -50,6 +50,12 @@ const Sidebar = () => {
               Attendance summary
             </Link>
             <Link
+              to="/leave-status"
+              className={`${pathname === "/leave-status" ? "active" : ""}`}
+            >
+              Leave status
+            </Link>
+            <Link
               to="/leave-application"
               className={`${pathname === "/leave-application" ? "active" : ""}`}
             >

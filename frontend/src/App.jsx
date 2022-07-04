@@ -13,6 +13,7 @@ import NotFound from "./components/404/404";
 import AddEmployee from "./components/addEmployees/AddEmployee";
 import Employees from "./components/employees/Employees";
 import ApproveLeave from "./components/approveLeave/ApproveLeave";
+import LeaveStatus from "./components/leaveStatus/LeaveStatus";
 
 const App = () => {
   return (
@@ -31,6 +32,7 @@ const App = () => {
             <Route path="/" element={<Profile />} />
             <Route path="attendance" element={<LogAttendance />} />
             <Route path="attendance-log" element={<Summary />} />
+            <Route path="leave-status" element={<LeaveStatus />} />
             <Route path="leave-application" element={<Leave />} />
           </Route>
           <Route path="*" element={<NotFound />} />

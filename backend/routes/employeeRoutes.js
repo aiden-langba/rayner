@@ -7,15 +7,13 @@ const router = express.Router();
 router.route("/:employeeid").get(employeeController.employeesDetails);
 
 router
-  .route("/employee/:employeeid/logs")
+  .route("/:employeeid/logs")
   .get(employeeController.employeelogs)
-  .post(employeeController.employeelog);
+  .post(employeeController.employeelog)
+  .put(employeeController.employeeout);
 
-router
-  .route("/leave")
-  .get(employeeController.employeeLeave)
-  .post(employeeController.applyLeave);
-
+router.route("/leave").post(employeeController.applyLeave);
+router.get("/leave/:employeeid", employeeController.employeeLeave);
 router.route("/login").post(employeeController.employeeLogin);
 
 module.exports = router;
