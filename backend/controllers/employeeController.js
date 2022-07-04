@@ -3,7 +3,8 @@ const bcrypt = require("bcrypt");
 const express = require("express");
 
 exports.employeesDetails = (req, res) => {
-  const sql = `select * from employee where employeeid = ${req.params.employeeid}`;
+  const sql = `select * from employee where email = '${req.params.employeeid}'`;
+  console.log("sql", sql);
   db.query(sql)
     .then((results) => res.send(results.rows))
     .catch((e) => console.log(e));
@@ -48,14 +49,17 @@ exports.applyLeave = (req, res) => {
 exports.employeeLogin = (req, res) => {
   const { email, password } = req.body;
   db.query(
-    `select email, password from employee where lower(email) like lower('${email}')`
+    `select employeeid, firstname, email, password from employee where lower(email) like lower('${email}')`
   ).then(async (results) => {
     const validPassword = await bcrypt.compare(
       password,
       results.rows[0].password
     );
     if (validPassword) {
-      res.status(200).send({ message: "Valid password" });
+      console.log("hereeeeeee");
+      res
+        .status(200)
+        .send({ message: "Valid password", employee: results.rows[0] });
     } else {
       res.status(400).send({ error: "Invalid Password" });
     }

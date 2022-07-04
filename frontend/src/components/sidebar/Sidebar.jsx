@@ -10,11 +10,33 @@ const Sidebar = () => {
   return (
     <section className="sidebar">
       <ul>
-        <Link to="/" className={`${pathname === "/" ? "active" : ""}`}>
-          Profile
-        </Link>
-        {user.role === "user" && (
+        {user.role === "admin" && (
           <>
+            <Link
+              to="/employees"
+              className={`${pathname === "/employees" ? "active" : ""}`}
+            >
+              Employees
+            </Link>
+            <Link
+              to="/add-employees"
+              className={`${pathname === "/add-employees" ? "active" : ""}`}
+            >
+              Add Employees
+            </Link>
+            <Link
+              to="/approve-leave"
+              className={`${pathname === "/approve-leave" ? "active" : ""}`}
+            >
+              Approve Leave
+            </Link>
+          </>
+        )}
+        {user.role === "employee" && (
+          <>
+            <Link to="/" className={`${pathname === "/" ? "active" : ""}`}>
+              Profile
+            </Link>
             <Link
               to="/attendance"
               className={`${pathname === "/attendance" ? "active" : ""}`}

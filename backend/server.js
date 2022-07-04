@@ -1,18 +1,13 @@
 const { json, urlencoded } = require("express");
 const express = require("express");
-// const ejs = require("ejs");
 const app = express();
 const port = 4000;
 const db = require("./config/database");
 const employeeRoutes = require("./routes/employeeRoutes");
 const adminRoutes = require("./routes/adminRoutes");
-const session = require("express-session");
-const { v4: uuidv4 } = require("uuid");
+const cors = require("cors");
 
-app.use(express.static("public"));
-// app.use(json())
-
-app.set("view engine", "ejs");
+app.use(cors());
 app.use(json(), urlencoded({ extended: true }));
 
 app.use("/employee", employeeRoutes);

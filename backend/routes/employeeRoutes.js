@@ -4,7 +4,7 @@ const router = express.Router();
 
 //routes for employees
 
-router.route("/employee/:employeeid").get(employeeController.employeesDetails);
+router.route("/:employeeid").get(employeeController.employeesDetails);
 
 router
   .route("/employee/:employeeid/logs")
@@ -12,7 +12,7 @@ router
   .post(employeeController.employeelog);
 
 router
-  .route("/employee/:employeeid/leave")
+  .route("/leave")
   .get(employeeController.employeeLeave)
   .post(employeeController.applyLeave);
 

@@ -10,19 +10,25 @@ import Summary from "./components/summary/Summary";
 import Leave from "./components/leave/Leave";
 import UserContext from "./context/User";
 import NotFound from "./components/404/404";
+import AddEmployee from "./components/addEmployees/AddEmployee";
+import Employees from "./components/employees/Employees";
+import ApproveLeave from "./components/approveLeave/ApproveLeave";
 
 const App = () => {
   return (
     <BrowserRouter>
       <UserContext>
         <Routes>
-          <Route element={<PrivateRoute role={["admin", "user"]} />}>
-            <Route path="/" element={<Profile />} />
+          <Route element={<PrivateRoute role={["admin", "employee"]} />}>
+            <Route path="/employees" element={<Employees />} />
+            <Route path="/add-employees" element={<AddEmployee />} />
+            <Route path="/approve-leave" element={<ApproveLeave />} />
           </Route>
           {/* <Route element={<PrivateRoute user={user} role={["admin"]} />}>
           <Route path="/admin" element={<Profile />} />
         </Route> */}
-          <Route element={<PrivateRoute role={["user"]} />}>
+          <Route element={<PrivateRoute role={["employee"]} />}>
+            <Route path="/" element={<Profile />} />
             <Route path="attendance" element={<LogAttendance />} />
             <Route path="attendance-log" element={<Summary />} />
             <Route path="leave-application" element={<Leave />} />

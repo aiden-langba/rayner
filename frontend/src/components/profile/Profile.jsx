@@ -1,6 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import "./profile.css";
+import { useAuth } from "../../context/User";
 const Profile = () => {
+  const [user, setUser] = useState(null);
+  console.log("userasdas", user);
+  const { user: authUser } = useAuth();
+  useEffect(() => {
+    axios
+      .get(`http://localhost:4000/employee/${authUser.user.email}`)
+      .then((res) => setUser(res.data[0]));
+  }, []);
+
   return (
     <div className="profile">
       <div className="profile-box shadow">
@@ -8,31 +19,30 @@ const Profile = () => {
         <div className="profile-body">
           <p>
             <label>Name:</label>
-            <span>Name</span>
+            <span>
+              {user?.firstname} {user?.lastname}
+            </span>
           </p>
           <p>
-            <label>Age:</label>
-            <span>Name</span>
+            <label>Email:</label>
+            <span>{user?.email}</span>
           </p>
+
           <p>
             <label>Contact:</label>
-            <span>Name</span>
+            <span>{user?.phoneno}</span>
           </p>
           <p>
             <label>Gender:</label>
-            <span>Name</span>
-          </p>
-          <p>
-            <label>DOB:</label>
-            <span>Name</span>
-          </p>
-          <p>
-            <label>Pan card:</label>
-            <span>Name</span>
+            <span>{user?.gender}</span>
           </p>
           <p>
             <label>Address:</label>
-            <span>Name</span>
+            <span>{user?.address}</span>
+          </p>
+          <p>
+            <label>DOB:</label>
+            <span>{user?.dob}</span>
           </p>
         </div>
       </div>

@@ -1,0 +1,11 @@
+.form-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1em;
+}
+.form-body label {
+  margin: 0;
+}
+.form-body input {
+  text-transform: none;
+}

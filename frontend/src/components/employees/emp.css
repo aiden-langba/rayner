@@ -1,0 +1,10 @@
+.summary-box.emp {
+  width: 85%;
+}
+.updateemp {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.179);
+}
+.leave.emp {
+}

@@ -5,7 +5,7 @@ const client = new Client({
   user: "postgres",
   database: "rayner",
   password: "password",
-  port: 5432,
+  port: 5432
 });
 
 const execute = async (query) => {
@@ -25,8 +25,8 @@ create table employee(
     employeeid SERIAL PRIMARY KEY,
     firstName VARCHAR(30),
     lastname VARCHAR(30),
-    email VARCHAR(30),
-    password VARCHAR(30),
+    email VARCHAR(30) unique,
+    password TEXT,
     gender VARCHAR(10),
     dob DATE,
     phoneno BIGINT,
@@ -51,7 +51,7 @@ create table leave(
 create table admin(
   adminid SERIAL PRIMARY KEY,
   email VARCHAR(50),
-  password VARCHAR(50)
+  password TEXT
 );`;
 
 execute(Table).then((result) => {

@@ -1,14 +1,23 @@
 # rayner
-proj
-
 
 create database name 'rayner' in postgres
 
+```
 cd backend
+```
 
+```
 npm i
+```
 
-run file employeetable.js in models folder to create schemas
+```
+npm run initTable
+```
 
-npm run dev to start server
+```
+npm run insert:db
+```
 
+```
+npm run dev
+```

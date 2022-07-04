@@ -4,11 +4,13 @@ const ctx = createContext({});
 export const useAuth = () => useContext(ctx);
 
 const UserContext = ({ children }) => {
+  const activeUser = JSON.parse(window.localStorage.getItem("user"));
   const [user, setUser] = useState({
-    isAuthenticated: true,
-    role: "user",
-    name: "Batista"
+    isAuthenticated: activeUser?.isAuthenticated || false,
+    role: activeUser?.role || "",
+    user: activeUser?.user || ""
   });
+  console.log("user", user);
   const updateUser = (newUser) => {
     setUser(newUser);
   };

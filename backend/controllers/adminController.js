@@ -18,7 +18,7 @@ exports.createEmployee = async (req, res) => {
     gender,
     dob,
     phoneno,
-    address,
+    address
   } = req.body;
 
   // generate salt to hash password
@@ -35,27 +35,31 @@ exports.createEmployee = async (req, res) => {
     gender,
     dob,
     phoneno,
-    address,
+    address
   ])
     .then(() => res.send("Employee created"))
     .catch((e) => console.log(e));
 };
 
 exports.adminLogin = async (req, res) => {
+  console.log("req.body", req.body);
   const { email, password } = req.body;
+
   db.query(
-    `select email, password from employee where lower(email) like lower('${email}')`
-  ).then(async (results) => {
-    const validPassword = await bcrypt.compare(
-      password,
-      results.rows[0].password
-    );
-    if (validPassword) {
-      res.status(200).send({ message: "Valid password" });
-    } else {
-      res.status(400).send({ error: "Invalid Password" });
-    }
-  });
+    `select email, password from admin where lower(email) like lower('${email}')`
+  )
+    .then(async (results) => {
+      const validPassword = await bcrypt.compare(
+        password,
+        results.rows[0].password
+      );
+      if (validPassword) {
+        res.status(200).send({ message: "Valid password", user: email });
+      } else {
+        res.status(400).send({ error: "Invalid Password" });
+      }
+    })
+    .catch((err) => res.status(400).send({ error: "Invalid Email" }));
 };
 
 exports.listEmployeesLeave = (req, res) => {
@@ -81,6 +85,7 @@ exports.approveLeave = (req, res) => {
 exports.updateEmployee = (req, res) => {
   const keys = Object.keys(req.body);
   const values = Object.values(req.body);
+  console.log("req.body", req.body);
   const placeholder = keys.map((item, i) => `${item}  =  \$${i + 1}`);
   const sql = ` update employee SET ${placeholder} where employeeid = ${req.params.employeeid} `;
   db.query(sql, values)
