@@ -27,3 +27,7 @@ nav .user {
   flex: 1;
   gap: 30px;
 }
+nav .user button {
+  padding: 3px 10px;
+  cursor: pointer;
+}

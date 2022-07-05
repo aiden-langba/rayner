@@ -19,6 +19,14 @@ const Sidebar = () => {
               Employees
             </Link>
             <Link
+              to="/attendance-employees"
+              className={`${
+                pathname === "/attendance-employees" ? "active" : ""
+              }`}
+            >
+              Attendance Employees
+            </Link>
+            <Link
               to="/add-employees"
               className={`${pathname === "/add-employees" ? "active" : ""}`}
             >

@@ -37,7 +37,7 @@ create table attendance(
   checkin TIME,
   checkout TIME,
   attendancedate DATE,
-  employeeid BIGINT REFERENCES employee(employeeid)
+  employeeid BIGINT REFERENCES employee(employeeid),
   unique (attendancedate, employeeid)
 );
 create table leave(

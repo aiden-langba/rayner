@@ -14,6 +14,7 @@ import AddEmployee from "./components/addEmployees/AddEmployee";
 import Employees from "./components/employees/Employees";
 import ApproveLeave from "./components/approveLeave/ApproveLeave";
 import LeaveStatus from "./components/leaveStatus/LeaveStatus";
+import AttendanceEmployees from "./components/attendanceEmployee/AttendanceEmployee";
 
 const App = () => {
   return (
@@ -22,6 +23,10 @@ const App = () => {
         <Routes>
           <Route element={<PrivateRoute role={["admin", "employee"]} />}>
             <Route path="/employees" element={<Employees />} />
+            <Route
+              path="/attendance-employees"
+              element={<AttendanceEmployees />}
+            />
             <Route path="/add-employees" element={<AddEmployee />} />
             <Route path="/approve-leave" element={<ApproveLeave />} />
           </Route>

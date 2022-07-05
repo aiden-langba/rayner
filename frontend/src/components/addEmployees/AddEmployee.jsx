@@ -22,7 +22,32 @@ const AddEmployee = () => {
 
   const onClick = (e) => {
     e.preventDefault();
-    axios.post("http://localhost:4000/admin/employees", employee);
+    const {
+      address,
+      dob,
+      email,
+      firstname,
+      gender,
+      lastname,
+      password,
+      phoneno
+    } = employee;
+    if (
+      !address ||
+      !dob ||
+      !email ||
+      !firstname ||
+      !gender ||
+      !lastname ||
+      !password ||
+      !phoneno
+    )
+      return alert("Enter all fields!");
+    axios
+      .post("http://localhost:4000/admin/employees", employee)
+      .then((res) => {
+        alert(res.data);
+      });
   };
   return (
     <section className="leave ">

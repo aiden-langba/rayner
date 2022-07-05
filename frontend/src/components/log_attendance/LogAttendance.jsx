@@ -28,9 +28,10 @@ const LogAttendance = () => {
           res.data[res.data.length - 1].checkout &&
           dayjs(res.data[res.data.length - 1].date).format("DD/MM/YYYY") ===
             dayjs(Date.now()).format("DD/MM/YYYY")
-        )
+        ) {
           setOffBtn(true);
-        getAttendance();
+          setBtnState(true);
+        }
       });
   };
   useEffect(() => {
@@ -79,7 +80,7 @@ const LogAttendance = () => {
                     checkout: time
                   }
                 )
-                .then((res) => console.log("res", res));
+                .then((res) => getAttendance());
             }}
           >
             Sign out

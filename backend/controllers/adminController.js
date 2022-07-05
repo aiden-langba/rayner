@@ -44,7 +44,7 @@ exports.createEmployee = async (req, res) => {
 exports.adminLogin = async (req, res) => {
   console.log("req.body", req.body);
   const { email, password } = req.body;
-
+  if (!email || !password) return res.status(400).send({ msg: "Empty fields" });
   db.query(
     `select email, password from admin where lower(email) like lower('${email}')`
   )
@@ -54,12 +54,12 @@ exports.adminLogin = async (req, res) => {
         results.rows[0].password
       );
       if (validPassword) {
-        res.status(200).send({ message: "Valid password", user: email });
+        res.status(200).send({ msg: "Valid password", user: email });
       } else {
-        res.status(400).send({ error: "Invalid Password" });
+        res.status(400).send({ msg: "Wrong credentials" });
       }
     })
-    .catch((err) => res.status(400).send({ error: "Invalid Email" }));
+    .catch((err) => res.status(400).send({ msg: "Wrong credentials" }));
 };
 
 exports.listEmployeesLeave = (req, res) => {
@@ -80,7 +80,7 @@ exports.approveLeave = (req, res) => {
   const placeholder = keys.map((item, i) => `${item}  =  \$${i + 1}`);
   const sql = ` update leave SET ${placeholder} where leaveid = ${req.params.employeeid} `;
   db.query(sql, values)
-    .then(() => res.send(`Leave for ${req.params.employeeid} approve`))
+    .then(() => res.send(`Leave ${req.body.leavestatus}`))
     .catch((e) => console.log(e));
 };
 
@@ -101,4 +101,12 @@ exports.deleteEmployee = (req, res) => {
   db.query(sql)
     .then(() => res.send(`Employee with ${req.params.employeeid} deleted`))
     .catch((e) => console.log(e));
+};
+
+exports.getEmployeeLogs = (req, res) => {
+  const sql = `SELECT * FROM attendance inner join employee on attendance.employeeid = employee.employeeid`;
+  console.log(sql);
+  db.query(sql)
+    .then((results) => res.status(200).send(results.rows))
+    .catch((e) => res.status(400).send({ msg: e }));
 };

@@ -7,6 +7,8 @@ router
   .get(adminController.listEmployees)
   .post(adminController.createEmployee);
 
+router.route("/logs").get(adminController.getEmployeeLogs);
+
 router.route("/employee/leaves").get(adminController.listEmployeesLeave);
 
 router

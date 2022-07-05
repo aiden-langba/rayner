@@ -54,20 +54,22 @@ exports.applyLeave = (req, res) => {
 
 exports.employeeLogin = (req, res) => {
   const { email, password } = req.body;
+  if (!email || !password) return res.status(400).send({ msg: "Empty fields" });
   db.query(
     `select employeeid, firstname, email, password from employee where lower(email) like lower('${email}')`
-  ).then(async (results) => {
-    const validPassword = await bcrypt.compare(
-      password,
-      results.rows[0].password
-    );
-    if (validPassword) {
-      console.log("hereeeeeee");
-      res
-        .status(200)
-        .send({ message: "Valid password", employee: results.rows[0] });
-    } else {
-      res.status(400).send({ error: "Invalid Password" });
-    }
-  });
+  )
+    .then(async (results) => {
+      const validPassword = await bcrypt.compare(
+        password,
+        results.rows[0].password
+      );
+      if (validPassword) {
+        res
+          .status(200)
+          .send({ msg: "Valid password", employee: results.rows[0] });
+      } else {
+        res.status(400).send({ msg: "Wrong credentials" });
+      }
+    })
+    .catch(() => res.status(400).send({ msg: "Wrong credentials" }));
 };

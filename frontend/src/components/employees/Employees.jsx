@@ -82,6 +82,7 @@ export default function Employees() {
       sortable: false,
       renderCell: (params) => {
         const onClick = (e) => {
+          if (!confirm("Remove employee?")) return;
           e.stopPropagation(); // don't select this row after clicking
 
           const api = params.api;
@@ -150,15 +151,6 @@ export default function Employees() {
         );
       }
     }
-    // {
-    //   field: "gender",
-    //   headerName: "Full name",
-    //   description: "This column has a value getter and is not sortable.",
-    //   sortable: false,
-    //   width: 160,
-    //   valueGetter: (params) =>
-    //     `${params.row.firstName || ""} ${params.row.lastName || ""}`
-    // }
   ];
 
   return (

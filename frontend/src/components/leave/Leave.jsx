@@ -22,7 +22,10 @@ const Leave = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!leave.enddate || !leave.startdate) return;
-    axios.post("http://localhost:4000/employee/leave", leave);
+    axios.post("http://localhost:4000/employee/leave", leave).then((res) => {
+      console.log("res", res);
+      alert(res.data);
+    });
   };
   return (
     <section className="leave ">

@@ -25,12 +25,12 @@ const Login = () => {
         })
         .catch((err) => {
           console.log("err", err);
+          alert(err.response.data.msg);
         });
     else
       axios
         .post("http://localhost:4000/employee/login", user)
         .then((res) => {
-          console.log("res hello", res);
           const activeUser = {
             isAuthenticated: true,
             user: res.data.employee,
@@ -40,7 +40,7 @@ const Login = () => {
           window.location = "/";
         })
         .catch((err) => {
-          console.log("err", err);
+          alert(err.response.data.msg);
         });
   };
   const handleChange = (event) => {
